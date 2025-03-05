@@ -1,6 +1,11 @@
 name: composite build step
 description: build stuff
 
+outputs:
+  random:
+    description: 'A random number'
+    value: ${{ steps.prng.outputs.number }}
+
 runs:
   using: composite
   steps:
@@ -14,3 +19,6 @@ runs:
         mkdir ./public/
         cp -r ./src/. ./public/
       shell: bash
+    - id: prng
+      shell: bash
+      run: echo "number=$( echo $RANDOM )" >> $GITHUB_OUTPUT

@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: ./.github/actions/build/
+      - id: build
+        uses: ./.github/actions/build/
+      - run: echo ${{ steps.build.random }}
