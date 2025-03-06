@@ -1,1 +1,1 @@
-# README
+# gha-tests
