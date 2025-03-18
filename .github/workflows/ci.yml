@@ -12,3 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/actions/setup-env/
+      - name: Run
+        run: echo "${{ github.head_ref }}"
+      - name: positive startsWith test
+        if: ${{ startsWith(github.head_ref, 'changeset-release/') }}
+        run: echo "yay"
+      - name: negative startsWith test
+        if: ${{ startsWith(github.head_ref, 'changeset-release/') }}
+        run: echo "nay"
